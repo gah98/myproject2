@@ -30,7 +30,7 @@
       <div :style="msg3" class="text-danger">
         <p>密码格式为6-12位数字和字母的组合</p>
       </div>
-      <button class="btn btn-primary w-50">立即注册</button>
+      <button class="btn btn-primary w-50" @click="register">立即注册</button>
       <div>点击注册表示您同意并愿意遵守松霖协议</div>
     </div>
   </div>
@@ -82,7 +82,7 @@ export default {
     }
   },
   mounted(){
-        // this.login();
+        
   },
   methods: {
     check_phone(){
@@ -91,6 +91,7 @@ export default {
         this.msg="display:none";
       }else{
         this.msg="display:block";
+        return;
       }
     },
     message(){
@@ -111,9 +112,16 @@ export default {
       }else{
         this.msg1="display:none";
         this.msg2="display:block";
+        return;
       }
+    },
+    register(){
+      console.log(this.phone,this.password);
+      this.axios.get("/rigister?password="+ this.password+ "&phone="+this.phone)
+        .then((res)=>{
+        console.log(res.data);
+      });
     }
-
     // login(){
     //   //  console.log(this.phone);
     //   this.$ajax.post("http://xzserver.applinzi.com/users/signin",`uname=${this.phone}&upwd=${this.PASSWORD}`).then(result=>{

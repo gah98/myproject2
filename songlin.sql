@@ -10,12 +10,13 @@ CREATE TABLE laptop_family(
 /*用户表*/
 CREATE TABLE user(
   uid INT PRIMARY KEY AUTO_INCREMENT,
-  uname VARCHAR(8),
   password VARCHAR(12) NOT NULL,
-  phone BIGINT NOT NULL,
+  phone BIGINT NOT NULL
+);
+/* uname VARCHAR(8),
   email VARCHAR(20),
   address VARCHAR(35)
-);
+*/
 /*商品表：单个商品*/
 CREATE TABLE laptop(
   lid INT PRIMARY KEY AUTO_INCREMENT,

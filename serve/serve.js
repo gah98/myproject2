@@ -16,11 +16,11 @@ const pool=mysql.createPool({
 app.use(cors({
   origin:['http://localhost:8080','http://127.0.0.1:8080']
 }));
-app.post('/login',(req,res)=>{
+app.get('/rigister',(req,res)=>{
   let phone=req.query.phone;
   let password=req.query.password;
-  let sql='INSERT INTO user VALUES=?';
-  pool.query(sql,[phone,password],(error,result)=>{
+  let sql='INSERT INTO user VALUES(?,?,?)';
+  pool.query(sql,[null,phone,password],(error,result)=>{
     if(error) throw error;
     res.send({message:'插入成功',code:200,results:result})
   })
