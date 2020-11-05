@@ -20,8 +20,8 @@
             <!-- <img class="w-75" :src=tu.src alt=""> -->
           </router-link>
           <!-- 名称 -->
-          <p>沙发</p>
-          <p>￥666.00</p>
+          <p>标题</p>
+          <p>价格</p>
         </div>
       </div>
     </div>
@@ -31,15 +31,16 @@
       <h3 class="text">产品推荐</h3>
     </div>
     <!-- 橱柜 -->
-    <div v-for="(value,i) of index" :key="i" class="w-75 pt-5 chugui">
+    <!-- 后面用v-for循环写完 -->
+    <div class="w-75 pt-5 chugui">
       <h4>松霖橱柜 KITCHEN</h4>
       <!-- 第一排 -->
       <div>
         <ul class="list-unstyled row no-gutters">
           <li class="col-5">
             <img class="w-75" src="../../public/img/index_chugui1.jpg" alt="">
-            <p>新现代</p>
-            <span></span>
+            <p>标题</p>
+            <span>价格</span>
           </li>
           <li class="col-7">
             <img class="w-100" src="../../public/img/index_chugui2.jpg" alt="">
@@ -48,18 +49,29 @@
       </div>
       <!-- 第二排 -->
       <div>
-        <ul class="list-unstyled row no-gutters">
+        <ul class="list-unstyled row no-gutters text-center">
           <li class="col-4">
             <!-- 后面绑定 -->
-            <img src="" alt="">
+            <img class="w-75" src="" alt="">
+            <p>标题</p>
+            <span>价格</span>
           </li>
           <li class="col-4">
-            <img src="" alt="">
+            <!-- 后面绑定 -->
+            <img class="w-75" src="" alt="">
+            <p>标题</p>
+            <span>价格</span>
           </li>
           <li class="col-4">
-            <img src="" alt="">
+            <!-- 后面绑定 -->
+            <img class="w-75" src="" alt="">
+            <p>标题</p>
+            <span>价格</span>
           </li>
         </ul>
+      </div>
+      <div class="more">
+        <router-link to="/">查看更多</router-link>
       </div>
     </div>
   </div>
@@ -85,6 +97,16 @@
   }
   .chugui{
     margin: 0 auto;
+  }
+  .more{
+    width: 120px;height: 50px;
+    border: 2px solid #000;
+    text-align: center;
+    line-height: 50px;
+    margin: 0 auto;
+  }
+  .more>a{
+    text-decoration: none;
   }
   
 </style>

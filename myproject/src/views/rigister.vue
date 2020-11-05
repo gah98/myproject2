@@ -1,15 +1,20 @@
 <template>
+<div>
   <div class="container-fluid d-flex justify-content-center align-items-center bg">
     <div id="login" class="d-flex flex-column justify-content-around align-items-center">
       <h3>账号注册</h3>
       <div class="w-50">
         <div class="row no-gutters align-items-center border">
           <img class="icon col-1" src="../../public/img/icon/phone.svg" alt="">
-          <input v-model="phone" @blur="tishi" class="col-11 border-0" type="text" placeholder="请输入手机号">
+          <input v-model="phone" @blur="check_phone" class="col-11 border-0" type="text" placeholder="请输入手机号">
         </div>
-        <div class="row no-gutters mt-5 align-items-center border">
-          <input v-model="PASSWORD" @blur="tishi" class="col-8 border-0" type="password" placeholder="请输入短信验证码">
-          <button class="col-4 btn">发送验证码</button>
+        <div class="row no-gutters align-items-center border mt-3">
+          <img class="icon col-1" src="../../public/img/icon/scok.svg" alt="">
+          <input v-model="password" @blur="check_password" @focus="message" class="col-11 border-0" type="password" placeholder="请输入密码">
+        </div>
+        <div class="row no-gutters align-items-center border mt-3">
+          <img class="icon col-1" src="../../public/img/icon/scok.svg" alt="">
+          <input v-model="confirm_pass" @blur="check_confirm" class="col-11 border-0" type="password" placeholder="请再次输入密码">
         </div>
       </div>
       <!-- 手机号,密码不对时的提示 规则：密码为6-12位，可以有数字，字母  -->
@@ -17,12 +22,20 @@
         <p>请输入正确的手机号</p>
       </div>
       <div :style="msg1" class="text-danger">
-        <p>您输入的验证码不正确</p>
+        <p>您输入的密码格式不对</p>
+      </div>
+      <div :style="msg2" class="text-danger">
+        <p>两次密码输入不一致</p>
+      </div>
+      <div :style="msg3" class="text-danger">
+        <p>密码格式为6-12位数字和字母的组合</p>
       </div>
       <button class="btn btn-primary w-50">立即注册</button>
       <div>点击注册表示您同意并愿意遵守松霖协议</div>
     </div>
   </div>
+</div>
+  
 </template>
 <style scoped>
 *{
@@ -30,8 +43,8 @@
 }
 .bg{
   height: 750px;
-  background-image: url(../../public/img/bg.jpg);
-  background-size: 100%;
+  background: url(../../public/img/bg.jpg);
+  background-size:100%;
 }
   #login{
     width: 600px;height: 450px;
@@ -60,23 +73,46 @@ export default {
   data(){
     return{
       phone:"",
-      PASSWORD:"",
+      password:"",
       msg:"display:none",
-      msg1:"display:none"
+      msg1:"display:none",
+      msg2:"display:none",
+      msg3:"display:none",
+      confirm_pass:''
     }
   },
   mounted(){
-        this.login();
+        // this.login();
   },
   methods: {
-    tishi(){
+    check_phone(){
       var reg=/^1[3-9]\d{9}$/;
       if(reg.test(this.phone)){
         this.msg="display:none";
       }else{
-        this.msg="display:block"
+        this.msg="display:block";
       }
     },
+    message(){
+      this.msg3="display:block"
+    },
+    check_password(){
+      let reg=/^[0-9a-zA-Z]{6,12}$/;
+      if(reg.test(this.password)){
+        this.msg1="display:none";
+      }else{
+        this.msg="display:none";
+        this.msg1="display:block";
+      }
+    },
+    check_confirm(){
+      if(this.confirm_pass==this.password){
+
+      }else{
+        this.msg1="display:none";
+        this.msg2="display:block";
+      }
+    }
 
     // login(){
     //   //  console.log(this.phone);
