@@ -1,0 +1,23 @@
+/* #footer{
+  height: 400px;
+} */
+.icon2 img{
+  width: 30px;
+  background-color: #fff;
+}
+ul{
+  text-align: center;
+  list-style: none;
+  color: #fff;
+}
+ul>li:nth-child(2){
+  margin-top: 10px;
+}
+ul>li{
+  margin-top: 5px;
+}
+ul a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+}

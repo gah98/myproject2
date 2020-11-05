@@ -1,0 +1,13 @@
+.head{
+  margin: 0 auto;
+}
+.ul>li>a{
+  text-decoration: none;
+  color: black;
+}
+.ul>li>a:hover{
+  color: #BD7424;
+}
+.icon img{
+  width: 35px;
+}
