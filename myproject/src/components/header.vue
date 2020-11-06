@@ -21,7 +21,7 @@
           <div class="d-flex justify-content-around align-items-center aaa">
             <div>
               <el-menu-item>
-                <router-link to="/">首页</router-link>
+                <router-link class="text-dark" to="/">首页</router-link>
               </el-menu-item>
             </div>
             <div><el-menu-item>全屋订制</el-menu-item></div>
@@ -91,6 +91,7 @@
   .aaa:focus{
     outline: none;
     border: none;
+    font-size: 24px;
   }
 </style>
 
@@ -99,8 +100,12 @@ export default {
   data() {
     return {
       xianshi:'display:none',
-      activeIndex:"1"
+      activeIndex:"1",
+      id:''
     }
+  },
+  mounted() {
+    console.log(this.$route.params.username)
   },
   methods: {
     handleSelect(key, keyPath) {

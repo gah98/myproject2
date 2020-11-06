@@ -78,56 +78,78 @@ export default {
       msg1:"display:none",
       msg2:"display:none",
       msg3:"display:none",
-      confirm_pass:''
+      confirm_pass:'',
     }
   },
   mounted(){
         
   },
   methods: {
+    // 检测电话格式
     check_phone(){
       var reg=/^1[3-9]\d{9}$/;
       if(reg.test(this.phone)){
         this.msg="display:none";
+        return true;
       }else{
         this.msg="display:block";
-        return;
+        return false;
       }
     },
     message(){
       this.msg3="display:block"
     },
+    // 检测密码格式
     check_password(){
       let reg=/^[0-9a-zA-Z]{6,12}$/;
       if(reg.test(this.password)){
         this.msg1="display:none";
+        return true;
       }else{
         this.msg="display:none";
         this.msg1="display:block";
+        return this.else;
       }
     },
+    // 检测重新密码对应
     check_confirm(){
       if(this.confirm_pass==this.password){
-
+        return true;
       }else{
         this.msg1="display:none";
         this.msg2="display:block";
-        return;
+        return false;
       }
     },
+    //点击注册
     register(){
       console.log(this.phone,this.password);
-      this.axios.get("/rigister?password="+ this.password+ "&phone="+this.phone)
-        .then((res)=>{
-        console.log(res.data);
-      });
-    }
-    // login(){
-    //   //  console.log(this.phone);
-    //   this.$ajax.post("http://xzserver.applinzi.com/users/signin",`uname=${this.phone}&upwd=${this.PASSWORD}`).then(result=>{
-    //     console.log(result.data);
-    //   });
-    //  }
+      if(this.check_phone() && this.check_password() && this.check_confirm()){
+        this.axios.post('/register','phone='+this.phone+'&password='+this.password)
+          .then((res)=>{
+          console.log(res.data);
+          if(res.data.code==200){
+            this.$router.push('/');
+            // this.username=this.phone;
+            // this.update(this.username);
+            // alert("注册成功");
+          }else if(res.data.code==4){
+            alert("电话已经被注册")
+          }
+        });
+      }else{
+        alert("输入的信息有误");
+      }
+    },
+
+    // update(id){
+    //   this.$router.push({
+    //     path:'/header',
+    //     params:{
+    //       id:id
+    //     }
+    //   })
+    // }
   }
   
 }

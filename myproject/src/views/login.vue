@@ -9,7 +9,7 @@
         </div>
         <div class="row no-gutters mt-5 align-items-center border">
            <img class="icon col-1" src="../../public/img/icon/scok.svg" alt="">
-          <input v-model="PASSWORD" @blur="tishi" class="col-11 border-0" type="password" placeholder="请输入密码">
+          <input v-model="password" @blur="tishi" class="col-11 border-0" type="password" placeholder="请输入密码">
         </div>
       </div>
       <!-- 手机号,密码不对时的提示 规则：密码为6-12位，可以有数字，字母  -->
@@ -19,7 +19,7 @@
       <div :style="msg1" class="text-danger">
         <p>您输入的密码不正确</p>
       </div>
-      <button class="btn btn-primary w-50">立即登录</button>
+      <button @click="login" class="btn btn-primary w-50">立即登录</button>
       <div class="d-flex justify-content-between w-50">
         <a class="" href="#">忘记密码</a>
         <a href="#">使用短信验证登录</a>
@@ -72,7 +72,7 @@ export default {
   data(){
     return{
       phone:"",
-      PASSWORD:"",
+      password:"",
       msg:"display:none",
       msg1:"display:none"
     }
@@ -96,13 +96,20 @@ export default {
       }
     },
 
-    
-    // login(){
-    //   //  console.log(this.phone);
-    //   this.$ajax.post("http://xzserver.applinzi.com/users/signin",`uname=${this.phone}&upwd=${this.PASSWORD}`).then(result=>{
-    //     console.log(result.data);
-    //   });
-    //  }
+    // 点击登录
+    login(){
+      let object={
+        phone:this.phone,
+        password:this.password
+      }
+      this.axios.post('/login',this.qs.stringify(object)).then(res=>{
+        if(res.data.code==200){
+          alert("登录成功");
+        }else{
+          alert("登录失败:账号或密码错误");
+        }
+      })
+    }
   }
   
 }
