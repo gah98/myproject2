@@ -24,7 +24,9 @@
                 <router-link class="text-dark" to="/">首页</router-link>
               </el-menu-item>
             </div>
-            <div><el-menu-item>全屋订制</el-menu-item></div>
+            <div><el-menu-item>
+              <router-link class="text-dark" to="/quanwu">全屋订制</router-link>
+            </el-menu-item></div>
             <div>
               <el-submenu index="2">
                 <template slot="title">卫浴</template>

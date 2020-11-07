@@ -4,6 +4,7 @@ import Index from '../views/index.vue'
 import Login from '../views/login.vue'
 import Register from '../views/rigister.vue'
 import Details from '../views/details.vue'
+import Quanwu from '../views/quanwu.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -22,6 +23,10 @@ const routes = [
     path:'/details',
     component:Details
   },
+  {
+    path:'/quanwu',
+    component:Quanwu
+  }
   
 ]
 

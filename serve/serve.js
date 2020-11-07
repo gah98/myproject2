@@ -3,7 +3,7 @@ const mysql=require('mysql');
 const cors=require('cors');
 const bodyParser=require('body-parser');
 const app=express();
-app.listen(4000);
+app.listen(3000);
 const pool=mysql.createPool({
   host:'127.0.0.1',
   port:'3306',
@@ -16,9 +16,23 @@ const pool=mysql.createPool({
 app.use(express.static('./public'))
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cors({
-  origin:['http://localhost:8081','http://127.0.0.1:8081']
+  origin:['http://localhost:8080','http://127.0.0.1:8080']
 }));
 
+// 首页初始化加载
+app.get('/index_laptop',(req,res)=>{
+  let sql='select id,title,price,image from index_laptop';
+  pool.query(sql,(error,result)=>{
+    if(error) throw error;
+    res.send({message:"查询成功",code:200,results:result});
+  })
+});
+
+// 全屋订制也初始化加载
+app.get('/quanwu',(req,res)=>{
+  let sql='select id,title,price,image from index_laptop';
+})
+// 注册
 app.post('/register',(req,res)=>{
   let phone=req.body.phone;
   let password=req.body.password;
