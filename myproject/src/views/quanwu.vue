@@ -5,20 +5,8 @@
     </div>
     <div class="mt-5">
       <ul class="list-unstyled d-flex justify-content-around a">
-        <li>
+        <li v-for="(item,index) of fenlei" :key="index">
           <router-link to="">橱柜</router-link>
-        </li>
-        <li>
-          <router-link to="">衣柜</router-link>
-        </li>
-        <li>
-          <router-link to="">榻榻米</router-link>
-        </li>
-        <li>
-          <router-link to="">儿童房</router-link>
-        </li>
-        <li>
-          <router-link to="">电视墙</router-link>
         </li>
       </ul>
     </div>
@@ -45,12 +33,12 @@
 export default {
   data() {
     return {
-      quanwu:[]
+      fenlei:[]
     }
   },
   mounted() {
-    this.axios.get('/quanwu').then(res=>{
-      this.quanwu=res.data.result;
+    this.axios.get('/fenlei').then(res=>{
+      this.fenlei=res.data.result;
     })
   },
 }

@@ -29,7 +29,7 @@ app.get('/index_laptop',(req,res)=>{
 });
 
 // 全屋订制也初始化加载
-app.get('/quanwu',(req,res)=>{
+app.get('/feilei',(req,res)=>{
   let sql='select id,title,price,image from index_laptop';
 })
 // 注册
