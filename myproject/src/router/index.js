@@ -5,11 +5,16 @@ import Login from '../views/login.vue'
 import Register from '../views/rigister.vue'
 import Details from '../views/details.vue'
 import Quanwu from '../views/quanwu.vue'
+import Header from '../components/header.vue'
 Vue.use(VueRouter)
 
 const routes = [
   { path:'/',
     component:Index
+  },
+  {
+    path:'/header',
+    component:Header
   },
   {
     path:'/login',
@@ -24,7 +29,7 @@ const routes = [
     component:Details
   },
   {
-    path:'/quanwu',
+    path:'/quanwu/:id',
     component:Quanwu
   }
   

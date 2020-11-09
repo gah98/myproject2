@@ -28,9 +28,27 @@ app.get('/index_laptop',(req,res)=>{
   })
 });
 
+app.get('/classify',(req,res)=>{
+  let sql='select id,fname from laptop_family';
+  pool.query(sql,(error,result)=>{
+    if(error) throw error;
+    if(result.length>0){
+      res.send({message:'获取成功',code:200,results:result});
+    }
+  })
+})
 // 全屋订制也初始化加载
-app.get('/feilei',(req,res)=>{
-  let sql='select id,title,price,image from index_laptop';
+app.get('/fenlei',(req,res)=>{
+  let id=req.query.id;
+  // console.log(id);
+  let sql='select id,title,price,promise,img1 from laptop where family_id=?';
+  pool.query(sql,[id],(error,result)=>{
+    if(error) throw error;
+    if(result.length>0){
+      res.send({message:'获取成功',code:200,results:result});
+      console.log(result);
+    }
+  })
 })
 // 注册
 app.post('/register',(req,res)=>{

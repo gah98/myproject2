@@ -4,9 +4,13 @@
       <img src="../../public/img/bg2.jpg" alt="">
     </div>
     <div class="mt-5">
-      <ul class="list-unstyled d-flex justify-content-around a">
+      <ul class="list-unstyled d-flex-wrap justify-content-around a">
         <li v-for="(item,index) of fenlei" :key="index">
-          <router-link to="">橱柜</router-link>
+          <router-link to="">
+            <img :src="item.img1" alt="">
+          </router-link>
+          <span>{{item.title}}</span>
+          <span>{{item.price}}</span>
         </li>
       </ul>
     </div>
@@ -33,13 +37,20 @@
 export default {
   data() {
     return {
-      fenlei:[]
+      fenlei:[],
+      id:''
     }
   },
   mounted() {
-    this.axios.get('/fenlei').then(res=>{
-      this.fenlei=res.data.result;
+    let id=this.$route.params.id;
+     console.log(id);
+    this.axios.get('/fenlei?id='+id).then(res=>{
+      this.fenlei=res.data.results;
+      console.log(this.fenlei);
     })
   },
+  watch:{
+    
+  }
 }
 </script>
