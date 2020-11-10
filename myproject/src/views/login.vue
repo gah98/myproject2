@@ -102,13 +102,15 @@ export default {
         phone:this.phone,
         password:this.password
       }
-      this.axios.post('/login',this.qs.stringify(object)).then(res=>{
-        if(res.data.code==200){
-          alert("登录成功");
-        }else{
-          alert("登录失败:账号或密码错误");
-        }
-      })
+      let str=this.qs.stringify(object)
+      this.$store.dispatch('login_actions',str);
+      // this.axios.post('/login',this.qs.stringify(object)).then(res=>{
+      //   if(res.data.code==200){
+      //     alert("登录成功");
+      //   }else{
+      //     alert("登录失败:账号或密码错误");
+      //   }
+      // })
     }
   }
   

@@ -5,7 +5,11 @@
         <span>股票简称：松霖科技</span>
         <span>股票代码：666888</span>
       </div>
-      <div>
+      <div class="d-flex" v-if="this.$store.state.isLogined==1">
+        <p class="text-danger">你好，{{this.$store.state.userInfo.phone}}</p>
+        <button @click="logout">注销</button>
+      </div>
+      <div v-else>
         <router-link to="/login" class="text-white">登录</router-link>
         <router-link to="/register" class="pl-2 text-white">注册</router-link>
       </div>
@@ -164,6 +168,10 @@ export default {
       // }else if(key==2){
       //   this.$router.push('quanwu/2');
       // }
+      },
+      logout(){
+        this.$store.commit('login_out');
+        localStorage.clear();
       }
   },
   watch: {

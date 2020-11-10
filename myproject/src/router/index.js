@@ -6,9 +6,14 @@ import Register from '../views/rigister.vue'
 import Details from '../views/details.vue'
 import Quanwu from '../views/quanwu.vue'
 import Header from '../components/header.vue'
+import Text from '../views/tes.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path:'/tes',
+    component:Text
+  },
   { path:'/',
     component:Index
   },

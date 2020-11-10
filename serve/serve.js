@@ -76,12 +76,13 @@ app.post('/login',(req,res)=>{
   let password=req.body.password;
   let sql='select phone,password from user where phone=? and password=?';
   pool.query(sql,[phone,password],(error,result)=>{
-    // console.log(result);//返回的是一个数组
+    //返回的是一个数组
     if(error) throw error;
     if(result.length>0){
-      res.send({message:"登录成功",code:200,results:result})
+      res.send({message:"登录成功",code:200,results:result[0]});
+      console.log(result[0]);
     }else{
-      res.send({message:"登录失败",code:4,results:result})
+      res.send({message:"登录失败",code:4,results:result[0]});
     }
   })
 });
