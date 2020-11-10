@@ -1,41 +1,30 @@
 <template>
   <div>
     <div class="bg">
-      <img src="../../public/img/bg2.jpg" alt="">
+      <img class="w-100" src="../../public/img/bg2.jpg" alt="">
     </div>
-    <div class="mt-5">
-      <ul class="list-unstyled d-flex-wrap justify-content-around a">
-        <li v-for="(item,index) of fenlei" :key="index">
-          <router-link to="">
-            <img :src="item.img1" alt="">
+    <div class="container">
+      <div class="mt-5">
+      <ul class="row no-gutters list-unstyled d-flex-wrap justify-content-around">
+        <li class="col-4 text-center" v-for="(item,index) of fenlei" :key="index">
+          <router-link :to="`/details/${item.id}`">
+            <img class="w-75" :src="item.img1" alt="">
           </router-link>
-          <span>{{item.title}}</span>
-          <span>{{item.price}}</span>
+          <p>{{item.title}}</p>
+          <p>￥{{item.price}}.00</p>
         </li>
       </ul>
-    </div>
-    <div class="text-center">
-      <h3>分类</h3>
-      <ul class="row list-unstyled">
-        <li class="col-3">
-          <router-link to=""></router-link>
-        </li>
-        <p>标题</p>
-        <p>价格</p>
-      </ul>
+      </div>
     </div>
   </div>
 </template>
 <style scoped>
-.a>li>a{
-  text-decoration: none;
-  color: #000;
-}
 </style>
 
 <script>
 export default {
   data() {
+    ;
     return {
       fenlei:[],
       id:''
@@ -43,14 +32,27 @@ export default {
   },
   mounted() {
     let id=this.$route.params.id;
-     console.log(id);
     this.axios.get('/fenlei?id='+id).then(res=>{
-      this.fenlei=res.data.results;
-      console.log(this.fenlei);
-    })
+        if(res.data.code==200){
+          this.fenlei=res.data.results;
+          // console.log(this.fenlei);
+        }
+      })
+    // console.log(id);
+  },
+  methods: {
+    getPath(){
+      let id=this.$route.params.id;
+      this.axios.get('/fenlei?id='+id).then(res=>{
+        if(res.data.code==200){
+          this.fenlei=res.data.results;
+          // console.log(this.fenlei);
+        }
+      })
+    }
   },
   watch:{
-    
+   '$route':'getPath'
   }
 }
 </script>

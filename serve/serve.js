@@ -46,7 +46,7 @@ app.get('/fenlei',(req,res)=>{
     if(error) throw error;
     if(result.length>0){
       res.send({message:'获取成功',code:200,results:result});
-      console.log(result);
+      // console.log(result);
     }
   })
 })
@@ -84,4 +84,17 @@ app.post('/login',(req,res)=>{
       res.send({message:"登录失败",code:4,results:result})
     }
   })
-})
+});
+
+// 详情页
+app.get('/details',(req,res)=>{
+  let id=req.query.id;
+  // console.log(id);
+  let sql='select title,price,promise,spec,img2,img3,img4,img5 from laptop where id=?'
+  pool.query(sql,[id],(error,result)=>{
+    if(error) throw error;
+    if(result.length>0){
+      res.send({message:"查询成功",code:200,results:result[0]});
+    }
+  });
+});
