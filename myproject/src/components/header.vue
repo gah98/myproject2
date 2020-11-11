@@ -121,9 +121,9 @@
             <router-link :to="`/search/${content}`" href="#">
               <img @click="Search" src="../../public/img/icon/搜索 search.png" alt="" />
             </router-link>
-            <a href="#">
+            <router-link to="/shopping_car"> 
               <img src="../../public/img/icon/购物车 .png" alt="" />
-            </a>
+           </router-link>
           </div>
         </div>
       </el-menu>

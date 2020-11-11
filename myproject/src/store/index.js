@@ -9,7 +9,10 @@ export default new Vuex.Store({
     // 表示页面是否登录
     isLogined:localStorage.getItem('isLogined') ||0,
     //存储用户的基础信息
+    
     userInfo:JSON.parse(localStorage.getItem('userInfo'))||{},
+    shopping_car:JSON.parse(window.sessionStorage.getItem('shopping_car'))||{},
+    // JSON.parse(window.sessionStorage.getItem('shopping_car'))||
   },
   //能改变state的数据
   mutations: {
@@ -25,12 +28,19 @@ export default new Vuex.Store({
       // 修改用户状态为0
       state.isLogined=0;
       state.userInfo={};
+    },
+    add_car(state,payload){
+      // let ahoop=[];
+      // ahoop.push(payload);
+      // state.shopping_car=payload;
+      window.sessionStorage.setItem('shopping_car',JSON.stringify(payload));
+      // console.log(ahoop);
     }
   },
   actions: {
     // 登录
     login_actions(context,payload){
-      console.log(payload);
+      // console.log(payload);
       axios.post('/login',payload).then(res=>{
            if(res.data.code==200){
             // console.log(res.data.results);

@@ -15,10 +15,10 @@
         </div>
         <!-- 购物车 -->
         <div class="shopping_car mt-5">
-          <button>-</button>
-          <input class="w-25 text-center" type="text" name="" value="1">
-          <button>+</button>
-          <div class="mt-5"><button class="btn btn-primary">加入购物车</button></div>
+          <button @click="minus">-</button>
+          <input v-model="count" class="w-25 text-center" type="text" name="">
+          <button @click="add">+</button>
+          <div class="mt-5"><button @click="shopping" class="btn btn-primary">加入购物车</button></div>
         </div>
       </div>
     </div>
@@ -61,7 +61,10 @@
 export default {
   data() {
     return {
-      detail:{}
+      detail:{},
+      count:1,
+      sum:'',
+      shuju:{}
     }
   },
   mounted() {
@@ -74,6 +77,33 @@ export default {
       }
     });
     // console.log(id);
+  },
+  methods: {
+    minus(){
+      if(this.count>1){
+        this.count--;
+      }
+    },
+    // 加法
+    add(){
+      this.count++;
+    },
+    // 加入购物车
+    shopping(){
+      // console.log(this.detail.price);
+      // 计算价格
+     this.sum=this.count*this.detail.price;
+      // console.log(sum);
+      // 定义一个对象
+      this.shuju={
+        img:this.detail.img2,title:this.detail.title,price:this.detail.price,count:this.count,sum:this.sum
+      },
+      this.$store.commit('add_car',this.shuju);
+      // this.$router.push({
+      //   name:'shopping_car',
+      //   params:{img:this.detail.img2,title:this.detail.title,price:this.detail.price,count:this.count}
+      // })
+    }
   },
 }
 </script>

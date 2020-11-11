@@ -45,7 +45,8 @@ const routes = [
   },
   {
     path:'/shopping_car',
-    component:Shopping_car
+    component:Shopping_car,
+    name:'shopping_car'
   }
   
 ]
