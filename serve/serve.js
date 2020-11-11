@@ -80,7 +80,7 @@ app.post('/login',(req,res)=>{
     if(error) throw error;
     if(result.length>0){
       res.send({message:"登录成功",code:200,results:result[0]});
-      console.log(result[0]);
+      // console.log(result[0]);
     }else{
       res.send({message:"登录失败",code:4,results:result[0]});
     }
@@ -99,3 +99,20 @@ app.get('/details',(req,res)=>{
     }
   });
 });
+
+
+// 搜索
+app.get('/search',(req,res)=>{
+  let title=req.query.title;
+  // console.log(title);
+  let sql='select id,title,price,img1 from laptop where title like ?'
+  pool.query(sql,['%'+title+'%'],(error,result)=>{
+    // console.log(result);
+    if(error) throw error;
+    if(result.length>0){
+      res.send({message:"查询成功",code:200,results:result});
+    }else{
+      res.send({message:"没有数据",code:4,results:result});
+    }
+  });
+})

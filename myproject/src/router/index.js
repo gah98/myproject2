@@ -7,6 +7,8 @@ import Details from '../views/details.vue'
 import Quanwu from '../views/quanwu.vue'
 import Header from '../components/header.vue'
 import Text from '../views/tes.vue'
+import Search from '../views/search.vue'
+import Shopping_car from '../views/shopping_car.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -36,6 +38,14 @@ const routes = [
   {
     path:'/quanwu/:id',
     component:Quanwu
+  },
+  {
+    path:'/search/:id',
+    component:Search
+  },
+  {
+    path:'/shopping_car',
+    component:Shopping_car
   }
   
 ]

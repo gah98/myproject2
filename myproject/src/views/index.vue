@@ -4,7 +4,7 @@
     <!-- 轮播图 -->
     <el-carousel class="w-100" indicator-position="outside" height="560px">
       <el-carousel-item class="w-100" v-for="(val,item) of backgroundImg" :key="item">
-        <a href=""><img class="w-100" :src="val.src" alt=""></a>
+        <router-link to="" href=""><img class="w-100" :src="val.src" alt=""></router-link>
       </el-carousel-item>
     </el-carousel>
     <!-- 新品发布 -->
@@ -15,7 +15,7 @@
         <!-- 后期换为从数据库拿到的数据 -->
         <div class="col-3" v-for="(tu,i) of tus.slice(0,6)" :key="i">
           <!-- 图片 -->
-          <router-link to="">
+          <router-link :to="`/details/${tu.id+35}`">
             <img class="w-75" :src="tu.image" alt="">
             <!-- <img class="w-75" :src=tu.src alt=""> -->
           </router-link>
@@ -37,14 +37,14 @@
       <div class="mt-3">
         <ul class="list-unstyled row no-gutters">
           <li class="col-3">
-            <router-link to="">
+            <router-link :to="`/details/${item1.id+35}`">
               <img class="w-100" :src="item1.image" alt="">
             </router-link>
             <p>{{item1.title}}</p>
             <span>￥{{item1.price}}</span>
           </li>
           <li class="col-9 text-center">
-            <router-link to="">
+            <router-link :to="`/details/${item2.id+35}`">
               <img class="w-75" :src="item2.image" alt="">
             </router-link>
             <p>{{item2.title}}</p>
@@ -56,7 +56,7 @@
       <div>
         <ul class="row no-gutters">
           <li class="col-4" v-for="(item,i) of tus.slice(8,11)" :key="i">
-            <router-link to="">
+            <router-link :to="`/details/${item.id+35}`">
               <img class="w-75" :src="item.image" alt="">
             </router-link>
             <p>{{item.title}}</p>
@@ -75,14 +75,14 @@
       <div class="mt-3">
         <ul class="list-unstyled row no-gutters">
           <li class="col-3">
-            <router-link to="">
+            <router-link :to="`/details/26`">
               <img class="w-100" :src="item3.image" alt="">
             </router-link>
             <p>{{item3.title}}</p>
             <span>￥{{item3.price}}</span>
           </li>
           <li class="col-9 text-center">
-            <router-link to="">
+            <router-link :to="`/details/27`">
               <img class="w-75" :src="item4.image" alt="">
             </router-link>
             <p>{{item4.title}}</p>
@@ -94,7 +94,7 @@
       <div>
         <ul class="list-unstyled row no-gutters">
           <li class="col-4" v-for="(item,i) of tus.slice(13,16)" :key="i">
-            <router-link to="">
+            <router-link :to="`/details/${item.id+33}`">
               <img class="w-75" :src="item.image" alt="">
             </router-link>
             <p>{{item.title}}</p>
@@ -113,14 +113,14 @@
       <div class="mt-3">
         <ul class="list-unstyled row no-gutters">
           <li class="col-7">
-            <router-link to="">
+            <router-link :to="`/details/9`">
               <img class="w-100" :src="item5.image" alt="">
             </router-link>
             <p>{{item5.title}}</p>
             <span>￥{{item5.price}}</span>
           </li>
           <li class="col-5 text-center">
-            <router-link to="">
+            <router-link :to="`/details/50`">
               <img class="w-100" :src="item6.image" alt="">
             </router-link>
             <p>{{item6.title}}</p>
@@ -132,7 +132,7 @@
       <div>
         <ul class="list-unstyled row no-gutters">
           <li class="col-4" v-for="(item,i) of tus.slice(18,21)" :key="i">
-            <router-link to="">
+            <router-link :to="`/details/${item.id+32}`">
               <img class="w-75" :src="item.image" alt="">
             </router-link>
             <p>{{item.title}}</p>
@@ -151,14 +151,14 @@
       <div class="mt-3">
         <ul class="list-unstyled row no-gutters">
           <li class="col-7">
-            <router-link to="">
+            <router-link :to="`/details/54`">
               <img class="w-100" :src="item7.image" alt="">
             </router-link>
             <p>{{item7.title}}</p>
             <span>￥{{item7.price}}</span>
           </li>
           <li class="col-5 text-center">
-            <router-link to="">
+            <router-link :to="`/details/55`">
               <img class="w-100" :src="item8.image" alt="">
             </router-link>
             <p>{{item8.title}}</p>
@@ -170,7 +170,7 @@
       <div>
         <ul class="list-unstyled row no-gutters">
           <li class="col-4" v-for="(item,i) of tus.slice(23,26)" :key="i">
-            <router-link to="">
+            <router-link :to="`/details/${item.id+32}`">
               <img class="w-75" :src="item.image" alt="">
             </router-link>
             <p>{{item.title}}</p>
